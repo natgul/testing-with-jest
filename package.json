@@ -21,5 +21,8 @@
   "homepage": "https://github.com/natgul/testing-with-jest#readme",
   "dependencies": {
     "underscore": "^1.13.3"
+  },
+  "devDependencies": {
+    "webpack": "^5.72.0"
   }
 }
