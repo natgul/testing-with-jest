@@ -32,3 +32,15 @@ describe('Clicking "Pusha till stacken"', () => {
 		await alert.accept();
 	});
 });
+
+test('Clicking "Poppa stacken"', () => {
+    if('should open a prompt box', async () => {
+        let pop = await driver.findElement(By.id('pop'));
+        await pop.click();
+        let alert = await driver.switchTo().alert();
+    });
+});
+
+/*
+
+}*/
