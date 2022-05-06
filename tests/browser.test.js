@@ -33,14 +33,29 @@ describe('Clicking "Pusha till stacken"', () => {
 	});
 });
 
-test('Clicking "Poppa stacken"', () => {
-    if('should open a prompt box', async () => {
+test('Clicking "Poppa stacken"', async () => {
+        //Get top-of-stack
+        let stack = await driver.findElement(By.id('top_of_stack')).getText();
+
+        //Add 'äpplen' i stack
+        let push = await driver.findElement(By.id('push'));
+		await push.click();
+		let alertPush = await driver.switchTo().alert();
+		await alertPush.sendKeys("Äpplen");
+		await alertPush.accept();
+
+        //Delete 'äpplen' from stack
         let pop = await driver.findElement(By.id('pop'));
         await pop.click();
-        let alert = await driver.switchTo().alert();
+        let alertPop = await driver.switchTo().alert();
+        await alertPop.accept();
+
+        //Uppdate stack by clicking on "Vad finns överst på stacken?"
+        let peek = await driver.findElement(By.id('peek'))
+        await peek.click();
+
+        //New version of stack
+        let updatedStack = await driver.findElement(By.id('top_of_stack')).getText();
+        
+        expect(updatedStack).toEqual(stack);
     });
-});
-
-/*
-
-}*/
